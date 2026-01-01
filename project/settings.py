@@ -50,8 +50,10 @@ MIDDLEWARE = [
 ]
 
 # CORS SETTINGS
-CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS",
-    f"http://localhost:3000,http://127.0.0.1:3000, http://127.0.0.1:8000,{SERVER_URL}:8000").split(",")
+cors_origins_default = "http://localhost:3000,http://127.0.0.1:3000,http://127.0.0.1:8000"
+if SERVER_URL:
+    cors_origins_default += f",{SERVER_URL}:8000"
+CORS_ALLOWED_ORIGINS = env("CORS_ALLOWED_ORIGINS", cors_origins_default).split(",")
 CORS_ALLOW_ALL_ORIGINS = env("CORS_ALLOW_ALL_ORIGINS", "False").lower() == "true"
 CORS_ALLOW_CREDENTIALS = True
 
@@ -162,3 +164,11 @@ GOOGLE_OAUTH2_REDIRECT_URI = env('LOGIN_REDIRECT_URL')
 GOOGLE_OAUTH2_CLIENT_ID = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 GOOGLE_OAUTH2_CLIENT_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 FRONTEND_REDIRECT_URL = env('FRONTEND_REDIRECT_URL')
+
+# EVALUATION SETTINGS
+EVALUATION_THRESHOLD = 70.0  # Minimum score (0-100) for is_correct = True
+CODE_SCORE_WEIGHTS = {
+    'test_rate': 0.4,      # Weight for test case pass rate
+    'similarity': 0.3,     # Weight for code similarity to ideal solution
+    'quality': 0.3         # Weight for code quality (style, best practices)
+}

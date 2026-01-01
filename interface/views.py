@@ -27,6 +27,8 @@ import tempfile
 import os
 from .embeddings import is_question_duplicate, store_question_embedding
 from .generation_utils import generate_coding_question, generate_theory_question as generate_theory_question_util, generate_mcq_question as generate_mcq_question_util
+from .evaluation.evaluators import evaluate_theory_answer, evaluate_code_answer
+from .utils import run_code, normalize_output, get_file_extension, get_execution_command
 import logging
 
 logger = logging.getLogger(__name__)
@@ -494,155 +496,6 @@ def submit_answer(request):
         'time_taken': time_taken,
         'failed_test_cases': failed_test_cases,
     }, status=status.HTTP_200_OK)
-    
-def run_code(code, input_data, expected_output, language):
-    """
-    Execute code in various languages and compare output with expected output.
-    This is a simple implementation and should be replaced with a secure sandbox in production.
-    """
-    try:
-        # Create a temporary file to hold the code
-        with tempfile.NamedTemporaryFile(suffix=get_file_extension(language), delete=False) as temp_file:
-            temp_file.write(code.encode('utf-8'))
-            temp_file_path = temp_file.name
-
-        # Create a temporary file for input if needed
-        input_file_path = None
-        if input_data:
-            with tempfile.NamedTemporaryFile(delete=False) as input_file:
-                input_file.write(input_data.encode('utf-8'))
-                input_file_path = input_file.name
-
-        # Determine command based on language
-        command = get_execution_command(language, temp_file_path)
-        if not command:
-            print(f"Unsupported language: {language}")
-            return False
-
-        # Execute the code with appropriate command
-        if input_data:
-            # Use input file if input data is provided
-            with open(input_file_path, 'r') as input_file:
-                process = subprocess.run(
-                    command,
-                    stdin=input_file,
-                    text=True,
-                    capture_output=True,
-                    timeout=10  # Increased timeout for more complex programs
-                )
-        else:
-            # Run without input if none provided
-            process = subprocess.run(
-                command,
-                text=True,
-                capture_output=True,
-                timeout=10
-            )
-
-        # Clean up temporary files
-        os.unlink(temp_file_path)
-        if input_file_path:
-            os.unlink(input_file_path)
-
-        # Check result
-        actual_output = process.stdout.strip()
-        expected_output = expected_output.strip()
-        
-        # For debugging
-        print(f"Actual output: {actual_output}")
-        print(f"Expected output: {expected_output}")
-        print(f"Process return code: {process.returncode}")
-        if process.stderr:
-            print(f"Process errors: {process.stderr}")
-        
-        # Allow for different line endings and whitespace
-        return normalize_output(actual_output) == normalize_output(expected_output)
-    
-    except subprocess.TimeoutExpired:
-        print("Code execution timed out")
-        return False
-    except Exception as e:
-        print(f"Error during code execution: {str(e)}")
-        import traceback
-        traceback.print_exc()
-        return False
-
-def get_file_extension(language):
-    """Return the appropriate file extension for the programming language"""
-    language = language.lower()
-    extensions = {
-        'python': '.py',
-        'python3': '.py',
-        'java': '.java',
-        'javascript': '.js',
-        'node': '.js',
-        'nodejs': '.js',
-        'c': '.c',
-        'c++': '.cpp',
-        'cpp': '.cpp',
-        'c#': '.cs',
-        'csharp': '.cs',
-        'php': '.php',
-        'ruby': '.rb',
-        'go': '.go',
-        'rust': '.rs',
-    }
-    return extensions.get(language, '.txt')
-
-def get_execution_command(language, file_path):
-    """Return the appropriate command to execute code in the given language"""
-    language = language.lower()
-    
-    if language in ['python', 'python3']:
-        return ['python', file_path]
-    elif language in ['javascript', 'node', 'nodejs']:
-        return ['node', file_path]
-    elif language == 'java':
-        # Assuming the file contains a public class with the same name as the file
-        class_name = os.path.splitext(os.path.basename(file_path))[0]
-        # First compile, then run
-        subprocess.run(['javac', file_path], check=True)
-        return ['java', '-classpath', os.path.dirname(file_path), class_name]
-    elif language == 'php':
-        return ['php', file_path]
-    elif language == 'ruby':
-        return ['ruby', file_path]
-    elif language in ['c', 'cpp', 'c++']:
-        output_path = os.path.splitext(file_path)[0]
-        # First compile, then run
-        if language == 'c':
-            subprocess.run(['gcc', file_path, '-o', output_path], check=True)
-        else:
-            subprocess.run(['g++', file_path, '-o', output_path], check=True)
-        return [output_path]
-    elif language in ['c#', 'csharp']:
-        output_path = os.path.splitext(file_path)[0] + '.exe'
-        # First compile, then run
-        subprocess.run(['csc', file_path, '/out:' + output_path], check=True)
-        return [output_path]
-    elif language == 'go':
-        output_path = os.path.splitext(file_path)[0]
-        # First compile, then run
-        subprocess.run(['go', 'build', '-o', output_path, file_path], check=True)
-        return [output_path]
-    elif language == 'rust':
-        output_path = os.path.splitext(file_path)[0]
-        # First compile, then run
-        subprocess.run(['rustc', file_path, '-o', output_path], check=True)
-        return [output_path]
-    else:
-        # For unsupported languages, default to python
-        print(f"Language {language} not directly supported, defaulting to Python")
-        return ['python', file_path]
-
-def normalize_output(output):
-    """Normalize output string to handle different line endings and whitespace"""
-    # Replace all types of line endings with a standard one
-    normalized = output.replace('\r\n', '\n').replace('\r', '\n')
-    # Remove leading/trailing whitespace
-    normalized = normalized.strip()
-    # Normalize whitespace between lines
-    return '\n'.join(line.strip() for line in normalized.split('\n'))
 
 # Enhanced Leaderboard view
 @api_view(['GET'])
@@ -1479,6 +1332,7 @@ def submit_quiz_answer(request, quiz_id):
         return Response({'error': 'Question already answered'}, status=status.HTTP_400_BAD_REQUEST)
     
     # Validate and process the answer based on question type
+    evaluation = None
     is_correct = False
     feedback = ""
     
@@ -1488,128 +1342,23 @@ def submit_quiz_answer(request, quiz_id):
         except QuizQuestion.DoesNotExist:
             return Response({'error': 'Question not found'}, status=status.HTTP_404_NOT_FOUND)
         
-        # Instead of calling submit_answer, evaluate the code answer directly
-        # This avoids the request object conversion issue
-        data = {
-            'question_id': question_id,
-            'code': user_answer,
-            'language': quiz.programming_language.name.lower(),
-            'start_time': (timezone.now() - timezone.timedelta(minutes=5)).isoformat()  # Assume 5 minutes for solving
-        }
-        
         try:
-            # Get the question
-            question = QuizQuestion.objects.get(id=question_id)
-            
-            # Calculate time taken (using the mock time from above)
-            end_time = timezone.now()
-            
-            # Fix for handling datetime strings that might already have timezone info
-            try:
-                # Try to parse the datetime string
-                start_time_dt = timezone.datetime.fromisoformat(data['start_time'])
-                
-                # Check if the datetime is already timezone-aware
-                if timezone.is_aware(start_time_dt):
-                    start_time = start_time_dt
-                else:
-                    # If it's naive, make it aware
-                    start_time = timezone.make_aware(start_time_dt)
-            except Exception as e:
-                print(f"Error parsing start_time: {e}")
-                # Fallback to a safe default (5 minutes ago)
-                start_time = timezone.now() - timezone.timedelta(minutes=5)
-            
-            time_taken = (end_time - start_time).total_seconds()
-            
-            # Run code against test cases
+            # Use evaluation module for code evaluation
             test_cases = TestCase.objects.filter(question=question)
-            all_passed = True
-            failed_cases = []
-
-            # Verify with OpenAI
-            api_key = getattr(settings, 'OPENAI_API_KEY', None)
-            if not api_key:
-                return Response({'error': 'OpenAI API key not found'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-            headers = {
-                'Authorization': f'Bearer {api_key}',
-                'Content-Type': 'application/json'
-            }
-
-            # LLM Verification
-            prompt = (
-                f"You are an AI code checker responsible for evaluating the correctness of submitted code. Your task is to analyze the provided code snippet, determine if it correctly implements a solution to the given problem, and provide helpful feedback. Respond only with the JSON response.\n"
-                f"### Problem Description:\n{question.question_text}\n\n"
-                f"### Submitted Code ({data['language']}):\n```\n{data['code']}\n```\n\n"
-                f"### Instructions:\n"
-                f"1. Determine if the code correctly solves the problem.\n"
-                f"2. If test cases are available, they should be the primary basis for your evaluation.\n"
-                f"3. If no test cases are available, evaluate the code's correctness based on your understanding of the problem.\n"
-                f"4. Include brief, constructive feedback about the solution.\n\n"
-                f"Respond with a JSON object in the following format:\n"
-                f"```json\n"
-                f"{{\n"
-                f'  "correct": true/false,\n'
-                f'  "feedback": "Brief explanation of the evaluation result",\n'
-                f"}}\n"
-                f"```"
+            evaluation = evaluate_code_answer(
+                user_code=user_answer,
+                question_text=question.question_text,
+                language=quiz.programming_language.name.lower(),
+                test_cases=test_cases
             )
             
-            llm_data = {
-                'model': 'gpt-4o-mini',
-                'messages': [
-                    {'role': 'system', 'content': 'You are a code verification assistant that provides accurate and helpful feedback.'},
-                    {'role': 'user', 'content': prompt}
-                ],
-                'temperature': 0,
-                'max_tokens': 1500,
-            }
+            is_correct = evaluation['is_correct']
+            feedback = evaluation['feedback']
             
-            try:
-                response = requests.post(
-                    'https://api.openai.com/v1/chat/completions',
-                    headers=headers,
-                    json=llm_data
-                )
-                
-                if response.status_code == 200:
-                    result = response.json()
-                    verification_result = result['choices'][0]['message']['content'].strip()
-                    
-                    # Try to parse the JSON from the response
-                    try:
-                        # Clean the response in case it contains markdown formatting
-                        clean_result = re.sub(r'```json|```', '', verification_result).strip()
-                        verification_json = json.loads(clean_result)
-                        
-                        is_correct = verification_json.get('correct', False)
-                        feedback = verification_json.get('feedback', '')
-                        failed_test_cases = verification_json.get('failed_test_cases', [])
-                        
-                    except json.JSONDecodeError:
-                        print(f"Failed to parse JSON from GPT response: {verification_result}")
-                        # If we can't parse the JSON, extract information using regex
-                        is_correct = 'true' in verification_result.lower() and '"correct": true' in verification_result.lower()
-                        feedback_match = re.search(r'"feedback":\s*"([^"]+)"', verification_result)
-                        feedback = feedback_match.group(1) if feedback_match else "Feedback not available"
-                        failed_test_cases = failed_cases
-                else:
-                    print(f"OpenAI API Error: {response.status_code}, {response.text}")
-                    return Response({
-                        'error': 'Failed to verify code',
-                        'details': response.text
-                    }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-                
-            except Exception as e:
-                print(f"Error during code verification: {e}")
-                import traceback
-                traceback.print_exc()
-
         except Exception as e:
             import traceback
             error_details = traceback.format_exc()
-            print(f"Error in submit_quiz_answer: {error_details}")
+            logger.error(f"Error in submit_quiz_answer (coding): {error_details}")
             return Response({'error': f'Error evaluating coding answer: {str(e)}'}, 
                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
@@ -1619,57 +1368,20 @@ def submit_quiz_answer(request, quiz_id):
         except TheoryQuestion.DoesNotExist:
             return Response({'error': 'Question not found'}, status=status.HTTP_404_NOT_FOUND)
         
-        # Evaluate theory answer directly instead of calling submit_theory_answer
-        api_key = getattr(settings, 'OPENAI_API_KEY', None)
-        if not api_key:
-            return Response({'error': 'OpenAI API key not found'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-        # Prepare the prompt for GPT
-        prompt = (
-            f"Evaluate the following answer to the question: '{question.question_text}'.\n"
-            f"User's answer: '{user_answer}'.\n"
-            f"Respond with 'Correct Answer' if the answer is correct, or 'Incorrect Answer' followed by a hint if it is not."
-        )
-
-        headers = {
-            'Authorization': f'Bearer {api_key}',
-            'Content-Type': 'application/json'
-        }
-
-        data = {
-            'model': 'gpt-4o-mini',
-            'messages': [
-                {'role': 'system', 'content': 'You are a helpful assistant.'},
-                {'role': 'user', 'content': prompt}
-            ],
-            'temperature': 0.7,
-            'max_tokens': 1500,
-        }
-
-        response = requests.post(
-            'https://api.openai.com/v1/chat/completions',
-            headers=headers,
-            json=data
-        )
-
-        if response.status_code == 200:
-            result = response.json()
-            feedback = result['choices'][0]['message']['content'].strip()
+        try:
+            # Use evaluation module for theory evaluation
+            evaluation = evaluate_theory_answer(
+                user_answer=user_answer,
+                question_text=question.question_text
+            )
             
-            # Extract only 'Correct Answer' or 'Incorrect Answer' with a hint
-            if 'Correct Answer' in feedback:
-                is_correct = True
-                feedback = 'Correct Answer'
-            elif 'Incorrect Answer' in feedback:
-                is_correct = False
-                # Adjust the regex to capture the hint correctly
-                hint_match = re.search(r"Incorrect Answer\. Hint: (.+)", feedback)
-                hint = hint_match.group(1) if hint_match else ""
-                feedback = f"Incorrect Answer. {hint}"
-            else:
-                return Response({'error': 'Unexpected response format'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-        else:
-            return Response({'error': 'Failed to verify answer'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            is_correct = evaluation['is_correct']
+            feedback = evaluation['feedback']
+            
+        except Exception as e:
+            logger.error(f"Error in submit_quiz_answer (theory): {str(e)}")
+            return Response({'error': f'Error evaluating theory answer: {str(e)}'}, 
+                           status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         
     elif question_type == 'mcq':
         try:
@@ -1684,14 +1396,27 @@ def submit_quiz_answer(request, quiz_id):
     else:
         return Response({'error': 'Invalid question type'}, status=status.HTTP_400_BAD_REQUEST)
     
-    # Save the response
-    response = QuizQuestionResponse.objects.create(
-        quiz=quiz,
-        question_type=question_type,
-        question_id=question_id,
-        user_response=user_answer,
-        is_correct=is_correct
-    )
+    # Save the response with scoring fields
+    response_data = {
+        'quiz': quiz,
+        'question_type': question_type,
+        'question_id': question_id,
+        'user_response': user_answer,
+        'is_correct': is_correct,
+    }
+    
+    # Add scoring fields based on question type and evaluation results
+    if evaluation:
+        response_data['score'] = evaluation.get('score', 0.0)
+        
+        if question_type == 'coding':
+            response_data['code_similarity'] = evaluation.get('code_similarity')
+            response_data['code_quality_score'] = evaluation.get('code_quality_score')
+            response_data['test_pass_rate'] = evaluation.get('test_pass_rate')
+        elif question_type == 'theory':
+            response_data['semantic_similarity'] = evaluation.get('semantic_similarity')
+    
+    response = QuizQuestionResponse.objects.create(**response_data)
     
     # Check if this was the last question in the quiz
     # Count the number of responses for this quiz
@@ -1733,6 +1458,17 @@ def submit_quiz_answer(request, quiz_id):
         'is_correct': is_correct,
         'feedback': feedback
     }
+    
+    # Add scoring fields to response if evaluation was performed
+    if evaluation:
+        response_data['score'] = evaluation.get('score', 0.0)
+        
+        if question_type == 'coding':
+            response_data['code_similarity'] = evaluation.get('code_similarity')
+            response_data['code_quality_score'] = evaluation.get('code_quality_score')
+            response_data['test_pass_rate'] = evaluation.get('test_pass_rate')
+        elif question_type == 'theory':
+            response_data['semantic_similarity'] = evaluation.get('semantic_similarity')
     
     if quiz_auto_complete:
         response_data['quiz_completed'] = True

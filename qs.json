@@ -1,0 +1,1202 @@
+[
+  {
+    "id": 1,
+    "level": "beginner",
+    "question": "Write a program to calculate the sum of all even numbers in a list of integers.",
+    "sample_input": "[1, 2, 3, 4, 5, 6]",
+    "expected_output": "12",
+    "explanation": "Iterate through the list using a loop. Use the modulo operator (%) to check if a number is even. If it is, add it to a cumulative sum variable."
+  },
+  {
+    "id": 2,
+    "level": "beginner",
+    "question": "Create a function that reverses a given string without using the built-in reverse() method.",
+    "sample_input": "\"Python\"",
+    "expected_output": "\"nohtyP\"",
+    "explanation": "You can use string slicing with a step of -1 (string[::-1]) or iterate through the string backwards and append characters to a new string."
+  },
+  {
+    "id": 3,
+    "level": "beginner",
+    "question": "Write a program to check if a given positive integer is a Prime number.",
+    "sample_input": "29",
+    "expected_output": "True",
+    "explanation": "Loop from 2 up to the square root of the number. If the number is divisible by any of these, it is not prime. If the loop completes without finding a divisor, it is prime."
+  },
+  {
+    "id": 4,
+    "level": "beginner",
+    "question": "Calculate the factorial of a non-negative integer provided by the user.",
+    "sample_input": "5",
+    "expected_output": "120",
+    "explanation": "Initialize a result variable to 1. Loop from 1 to n, multiplying the result variable by the current number in the loop."
+  },
+  {
+    "id": 5,
+    "level": "beginner",
+    "question": "Write a function that counts the number of vowels (a, e, i, o, u) in a given string.",
+    "sample_input": "\"Hello World\"",
+    "expected_output": "3",
+    "explanation": "Define a string or list of vowels. Iterate through the input string and increment a counter if the current character exists in the vowel list."
+  },
+  {
+    "id": 6,
+    "level": "beginner",
+    "question": "Find the largest number in a list without using the built-in max() function.",
+    "sample_input": "[10, 50, 20, 5]",
+    "expected_output": "50",
+    "explanation": "Assume the first element is the maximum. Iterate through the rest of the list; if you find a number greater than the current maximum, update the maximum."
+  },
+  {
+    "id": 7,
+    "level": "beginner",
+    "question": "Check if a given string is a palindrome (reads the same forwards and backwards).",
+    "sample_input": "\"radar\"",
+    "expected_output": "True",
+    "explanation": "Compare the string with its reverse (string[::-1]). If they are identical, the string is a palindrome."
+  },
+  {
+    "id": 8,
+    "level": "beginner",
+    "question": "Write a program that prints the numbers from 1 to n. For multiples of 3 print 'Fizz', for multiples of 5 print 'Buzz', and for multiples of both print 'FizzBuzz'.",
+    "sample_input": "15",
+    "expected_output": "1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz, 11, Fizz, 13, 14, FizzBuzz",
+    "explanation": "Use a loop. Check conditions using if-elif-else. Check for divisibility by 15 (both 3 and 5) first, then 3, then 5."
+  },
+  {
+    "id": 9,
+    "level": "beginner",
+    "question": "Remove duplicate elements from a list while maintaining the original order.",
+    "sample_input": "[1, 2, 2, 3, 4, 4, 5]",
+    "expected_output": "[1, 2, 3, 4, 5]",
+    "explanation": "Create an empty list. Iterate through the input list; append the item to the new list only if it is not already present."
+  },
+  {
+    "id": 10,
+    "level": "beginner",
+    "question": "Count the number of words in a sentence.",
+    "sample_input": "\"Python is fun\"",
+    "expected_output": "3",
+    "explanation": "Use the split() method to break the string into a list of words based on whitespace, then use len() to count the list elements."
+  },
+  {
+    "id": 11,
+    "level": "beginner",
+    "question": "Generate the first n numbers of the Fibonacci sequence.",
+    "sample_input": "6",
+    "expected_output": "[0, 1, 1, 2, 3, 5]",
+    "explanation": "Start with [0, 1]. Use a loop to append the sum of the last two elements of the list to the list n-2 times."
+  },
+  {
+    "id": 12,
+    "level": "beginner",
+    "question": "Convert a temperature from Celsius to Fahrenheit.",
+    "sample_input": "25",
+    "expected_output": "77.0",
+    "explanation": "Apply the formula: Fahrenheit = (Celsius * 9/5) + 32."
+  },
+  {
+    "id": 13,
+    "level": "beginner",
+    "question": "Find the second largest number in a list of unique integers.",
+    "sample_input": "[10, 20, 4, 45, 99]",
+    "expected_output": "45",
+    "explanation": "You can sort the list in ascending order and select the element at index -2, or iterate keeping track of the largest and second largest variables."
+  },
+  {
+    "id": 14,
+    "level": "beginner",
+    "question": "Determine if a given year is a leap year.",
+    "sample_input": "2024",
+    "expected_output": "True",
+    "explanation": "A year is a leap year if it is divisible by 4, except for end-of-century years, which must be divisible by 400."
+  },
+  {
+    "id": 15,
+    "level": "beginner",
+    "question": "Create a dictionary that counts the frequency of each character in a string.",
+    "sample_input": "\"banana\"",
+    "expected_output": "{'b': 1, 'a': 3, 'n': 2}",
+    "explanation": "Iterate through the string. If the char is in the dict, increment value. If not, set value to 1. Alternatively, use collections.Counter."
+  },
+  {
+    "id": 16,
+    "level": "beginner",
+    "question": "Calculate the average of a list of numbers.",
+    "sample_input": "[10, 20, 30, 40, 50]",
+    "expected_output": "30.0",
+    "explanation": "Sum all elements in the list and divide by the total number of elements (len(list))."
+  },
+  {
+    "id": 17,
+    "level": "beginner",
+    "question": "Convert a string to title case (capitalize the first letter of every word).",
+    "sample_input": "\"hello world python\"",
+    "expected_output": "\"Hello World Python\"",
+    "explanation": "Use the string method .title() or split the string, capitalize each word, and join them back together."
+  },
+  {
+    "id": 18,
+    "level": "beginner",
+    "question": "Merge two lists into a single list.",
+    "sample_input": "List1: [1, 2], List2: [3, 4]",
+    "expected_output": "[1, 2, 3, 4]",
+    "explanation": "Use the + operator or the extend() method to combine the lists."
+  },
+  {
+    "id": 19,
+    "level": "beginner",
+    "question": "Find the common elements between two lists.",
+    "sample_input": "List1: [1, 2, 3], List2: [3, 4, 5]",
+    "expected_output": "[3]",
+    "explanation": "Iterate through one list and check if the element exists in the second list. Alternatively, convert both to sets and find the intersection."
+  },
+  {
+    "id": 20,
+    "level": "beginner",
+    "question": "Remove a specific character from a string.",
+    "sample_input": "String: \"Hello\", Remove: \"l\"",
+    "expected_output": "\"Heo\"",
+    "explanation": "Use the .replace() method or iterate through the string and construct a new string skipping the target character."
+  },
+  {
+    "id": 21,
+    "level": "beginner",
+    "question": "Check if two strings are anagrams of each other.",
+    "sample_input": "\"listen\", \"silent\"",
+    "expected_output": "True",
+    "explanation": "Sort the characters of both strings and compare if the sorted versions are identical."
+  },
+  {
+    "id": 22,
+    "level": "beginner",
+    "question": "Convert a binary number (given as a string) to a decimal number.",
+    "sample_input": "\"101\"",
+    "expected_output": "5",
+    "explanation": "Use the int() function with base 2, i.e., int(binary_string, 2)."
+  },
+  {
+    "id": 23,
+    "level": "beginner",
+    "question": "Calculate the sum of the digits of a positive integer.",
+    "sample_input": "1234",
+    "expected_output": "10",
+    "explanation": "Convert the integer to a string, iterate through characters, convert back to int, and sum them. Or use modulo 10 loop."
+  },
+  {
+    "id": 24,
+    "level": "beginner",
+    "question": "Check if a list is sorted in ascending order.",
+    "sample_input": "[1, 2, 3, 5, 4]",
+    "expected_output": "False",
+    "explanation": "Iterate through the list and check if any element is greater than the element immediately following it. If so, return False."
+  },
+  {
+    "id": 25,
+    "level": "beginner",
+    "question": "Find the missing number in a list of integers from 1 to n.",
+    "sample_input": "[1, 2, 4, 5] (n=5)",
+    "expected_output": "3",
+    "explanation": "Calculate the expected sum of 1 to n using n*(n+1)/2. Subtract the sum of the actual list from this expected sum."
+  },
+  {
+    "id": 26,
+    "level": "beginner",
+    "question": "Validate a password: it must be at least 8 chars long and contain a number.",
+    "sample_input": "\"Pass123\"",
+    "expected_output": "False",
+    "explanation": "Check if len() < 8. Iterate through chars to check if any char.isdigit() is true."
+  },
+  {
+    "id": 27,
+    "level": "beginner",
+    "question": "Create a simple calculator that accepts two numbers and an operator (+, -, *, /).",
+    "sample_input": "5, 3, \"*\"",
+    "expected_output": "15",
+    "explanation": "Use if-elif statements to check the operator string and perform the corresponding arithmetic operation."
+  },
+  {
+    "id": 28,
+    "level": "beginner",
+    "question": "Count the number of uppercase and lowercase letters in a string.",
+    "sample_input": "\"Hello World\"",
+    "expected_output": "Upper: 2, Lower: 8",
+    "explanation": "Iterate through string. Use .isupper() and .islower() methods to increment respective counters."
+  },
+  {
+    "id": 29,
+    "level": "beginner",
+    "question": "Swap the values of two variables without using a third temporary variable.",
+    "sample_input": "a=5, b=10",
+    "expected_output": "a=10, b=5",
+    "explanation": "Python supports tuple unpacking: a, b = b, a."
+  },
+  {
+    "id": 30,
+    "level": "beginner",
+    "question": "Check if a specific substring exists within a string.",
+    "sample_input": "String: \"Hello World\", Sub: \"World\"",
+    "expected_output": "True",
+    "explanation": "Use the 'in' keyword: if substring in string."
+  },
+  {
+    "id": 31,
+    "level": "beginner",
+    "question": "Flatten a nested list (list of lists) into a single list.",
+    "sample_input": "[[1, 2], [3, 4], [5]]",
+    "expected_output": "[1, 2, 3, 4, 5]",
+    "explanation": "Iterate through the main list, then iterate through each sublist, appending items to a new flat list."
+  },
+  {
+    "id": 32,
+    "level": "beginner",
+    "question": "Find the Greatest Common Divisor (GCD) of two numbers.",
+    "sample_input": "48, 18",
+    "expected_output": "6",
+    "explanation": "Use the Euclidean algorithm or import gcd from the math module."
+  },
+  {
+    "id": 33,
+    "level": "beginner",
+    "question": "Generate an acronym from a given phrase.",
+    "sample_input": "\"Artificial Intelligence\"",
+    "expected_output": "\"AI\"",
+    "explanation": "Split the string into words. Iterate through words, take the first letter, convert to uppercase, and join them."
+  },
+  {
+    "id": 34,
+    "level": "beginner",
+    "question": "Remove all vowels from a string.",
+    "sample_input": "\"editor\"",
+    "expected_output": "\"dtr\"",
+    "explanation": "List comprehension or loop: create a new string including only characters that are not in the vowel set."
+  },
+  {
+    "id": 35,
+    "level": "beginner",
+    "question": "Check if a number is a power of two.",
+    "sample_input": "16",
+    "expected_output": "True",
+    "explanation": "Keep dividing the number by 2 while the remainder is 0. If you reach 1, it's a power of two."
+  },
+  {
+    "id": 36,
+    "level": "beginner",
+    "question": "Find the longest word in a sentence.",
+    "sample_input": "\"I love programming\"",
+    "expected_output": "\"programming\"",
+    "explanation": "Split the sentence into a list. Use max() with the key=len argument, or loop to compare lengths."
+  },
+  {
+    "id": 37,
+    "level": "beginner",
+    "question": "Add two 2x2 matrices (represented as lists of lists).",
+    "sample_input": "A=[[1,2],[3,4]], B=[[5,6],[7,8]]",
+    "expected_output": "[[6, 8], [10, 12]]",
+    "explanation": "Use nested loops to iterate through rows and columns, adding elements at the same indices."
+  },
+  {
+    "id": 38,
+    "level": "beginner",
+    "question": "Check if three given side lengths can form a valid triangle.",
+    "sample_input": "3, 4, 5",
+    "expected_output": "True",
+    "explanation": "The sum of any two sides must be greater than the third side (a+b>c, a+c>b, b+c>a)."
+  },
+  {
+    "id": 39,
+    "level": "beginner",
+    "question": "Calculate the sum of squares of the first n natural numbers.",
+    "sample_input": "3",
+    "expected_output": "14",
+    "explanation": "Loop from 1 to n. Square each number and add it to a total sum. (1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14)."
+  },
+  {
+    "id": 40,
+    "level": "beginner",
+    "question": "Count how many times a specific element appears in a list.",
+    "sample_input": "List: [1, 2, 2, 3], Element: 2",
+    "expected_output": "2",
+    "explanation": "Use the list method .count() or iterate and increment a counter."
+  },
+  {
+    "id": 41,
+    "level": "beginner",
+    "question": "Invert a dictionary (swap keys and values). Assume values are unique.",
+    "sample_input": "{'a': 1, 'b': 2}",
+    "expected_output": "{1: 'a', 2: 'b'}",
+    "explanation": "Iterate through .items() of the dictionary and set new_dict[value] = key."
+  },
+  {
+    "id": 42,
+    "level": "beginner",
+    "question": "Check if a string starts with a specific prefix.",
+    "sample_input": "\"Python\", Prefix: \"Py\"",
+    "expected_output": "True",
+    "explanation": "Use the built-in string method .startswith() or slice string[:len(prefix)] == prefix."
+  },
+  {
+    "id": 43,
+    "level": "beginner",
+    "question": "Rotate a list to the left by 1 position.",
+    "sample_input": "[1, 2, 3, 4]",
+    "expected_output": "[2, 3, 4, 1]",
+    "explanation": "Slice the list: list[1:] + list[:1]."
+  },
+  {
+    "id": 44,
+    "level": "beginner",
+    "question": "Find the median of a list of numbers (odd length).",
+    "sample_input": "[3, 1, 2, 5, 4]",
+    "expected_output": "3",
+    "explanation": "Sort the list. The median is the element at the index equal to the integer division of the length by 2."
+  },
+  {
+    "id": 45,
+    "level": "beginner",
+    "question": "Find the mode (most frequent element) in a list.",
+    "sample_input": "[1, 2, 2, 3]",
+    "expected_output": "2",
+    "explanation": "Count frequencies (using a dict or .count()). The element with the highest count is the mode."
+  },
+  {
+    "id": 46,
+    "level": "beginner",
+    "question": "Implement the Collatz conjecture step: if n is even, divide by 2; if odd, multiply by 3 and add 1.",
+    "sample_input": "5",
+    "expected_output": "16",
+    "explanation": "Use simple if-else logic based on the modulo of n."
+  },
+  {
+    "id": 47,
+    "level": "beginner",
+    "question": "Calculate the Hamming distance between two strings of equal length (count differences).",
+    "sample_input": "\"karolin\", \"kathrin\"",
+    "expected_output": "3",
+    "explanation": "Iterate through the indices of the strings. Increment counter if string1[i] != string2[i]."
+  },
+  {
+    "id": 48,
+    "level": "beginner",
+    "question": "Print the multiplication table for a given number up to 10.",
+    "sample_input": "3",
+    "expected_output": "[3, 6, 9, 12, 15, 18, 21, 24, 27, 30]",
+    "explanation": "Loop from 1 to 10, multiplying the number by the loop index."
+  },
+  {
+    "id": 49,
+    "level": "beginner",
+    "question": "Duplicate a string n times.",
+    "sample_input": "\"Hi\", 3",
+    "expected_output": "\"HiHiHi\"",
+    "explanation": "Python supports string multiplication: result = string * n."
+  },
+  {
+    "id": 50,
+    "level": "beginner",
+    "question": "Find the intersection of two sets (elements present in both).",
+    "sample_input": "{1, 2, 3}, {2, 3, 4}",
+    "expected_output": "{2, 3}",
+    "explanation": "Use the & operator between two sets or the .intersection() method."
+  },
+  {
+    "id": 51,
+    "level": "Intermediate",
+    "question": "Implement Kadane's Algorithm to find the contiguous subarray within a list of numbers that has the largest sum.",
+    "sample_input": "[-2, 1, -3, 4, -1, 2, 1, -5, 4]",
+    "expected_output": "6 (from [4, -1, 2, 1])",
+    "explanation": "Iterate through the array, tracking the current maximum sum ending at the current position and the overall maximum sum found so far."
+  },
+  {
+    "id": 52,
+    "level": "Intermediate",
+    "question": "Create a class that implements the iteration protocol (`__iter__` and `__next__`) to iterate over the squares of numbers from 1 to N.",
+    "sample_input": "for i in Squares(3): print(i)",
+    "expected_output": "1, 4, 9",
+    "explanation": "Implement `__iter__` to return self and `__next__` to calculate the next square, raising StopIteration when N is reached."
+  },
+  {
+    "id": 53,
+    "level": "Intermediate",
+    "question": "Implement a class method using the `@classmethod` decorator that acts as an alternative constructor, taking a birth year and calculating age.",
+    "sample_input": "Person.from_birth_year('Alice', 1990).age",
+    "expected_output": "35 (assuming current year is 2025)",
+    "explanation": "The class method receives the class (cls) as the first argument and returns an instance of the class by calling the main constructor."
+  },
+  {
+    "id": 54,
+    "level": "Intermediate",
+    "question": "Check if a given positive integer is a perfect square without using the built-in `sqrt()` function or `**` operator, using binary search.",
+    "sample_input": "81",
+    "expected_output": "True",
+    "explanation": "Use binary search in the range [1, num] to find if `mid * mid` equals the number."
+  },
+  {
+    "id": 55,
+    "level": "Intermediate",
+    "question": "Write a function to read a string in CSV format (comma-separated values with a header) and convert it into a list of dictionaries.",
+    "sample_input": "\"Name,Age\\nAlice,30\\nBob,25\"",
+    "expected_output": "[{'Name': 'Alice', 'Age': '30'}, {'Name': 'Bob', 'Age': '25'}]",
+    "explanation": "Split the string by newline to get rows. The first row is the header (keys). Iterate through the remaining rows to create dictionaries."
+  },
+  {
+    "id": 56,
+    "level": "Intermediate",
+    "question": "For a custom class representing a collection of items, implement the magic method `__len__` to return the number of items.",
+    "sample_input": "len(CustomCollection(['a', 'b', 'c']))",
+    "expected_output": "3",
+    "explanation": "Define `def __len__(self):` inside the class to return `len(self.items)`."
+  },
+  {
+    "id": 57,
+    "level": "Intermediate",
+    "question": "Given a list of file paths (like a simplified Unix path), simplify it by resolving '..' (up one directory) and '.' (current directory).",
+    "sample_input": "\"/a/./b/../c/\"",
+    "expected_output": "\"/a/c\"",
+    "explanation": "Split the path by '/', use a stack to process components. Pop for '..', skip for '.', and join the stack contents."
+  },
+  {
+    "id": 58,
+    "level": "Intermediate",
+    "question": "Rotate a list by k steps to the right *in-place* without creating a copy of the entire list.",
+    "sample_input": "List: [1, 2, 3, 4, 5], k=2",
+    "expected_output": "[4, 5, 1, 2, 3]",
+    "explanation": "Use the reverse technique: Reverse the entire list, then reverse the first k elements, and finally reverse the remaining elements."
+  },
+  {
+    "id": 59,
+    "level": "Intermediate",
+    "question": "Use `collections.defaultdict` to efficiently count the total sales for each employee from a list of (employee_id, sale_amount) tuples.",
+    "sample_input": "[(1, 100), (2, 50), (1, 200)]",
+    "expected_output": "{1: 300, 2: 50}",
+    "explanation": "Initialize `defaultdict(int)`. Iterate through the list and directly use `d[id] += amount` without checking for key existence."
+  },
+  {
+    "id": 60,
+    "level": "Intermediate",
+    "question": "Implement a class `Time` with attributes `hours` and `minutes`, and override the `__add__` method to correctly add two time objects.",
+    "sample_input": "Time(1, 30) + Time(0, 45)",
+    "expected_output": "Time(2, 15)",
+    "explanation": "In `__add__`, calculate total minutes, then use floor division and modulo to convert back to hours and minutes, handling overflow (e.g., 60 minutes = 1 hour)."
+  },
+  {
+    "id": 61,
+    "level": "Intermediate",
+    "question": "Check if a positive integer is an 'Ugly Number' (its prime factors are limited to 2, 3, and 5).",
+    "sample_input": "30",
+    "expected_output": "True (30 = 2 * 3 * 5)",
+    "explanation": "Repeatedly divide the number by 2, 3, and 5 until it can no longer be divided. If the final number is 1, it is ugly."
+  },
+  {
+    "id": 62,
+    "level": "Intermediate",
+    "question": "Write a recursive function to check if a list is sorted in ascending order.",
+    "sample_input": "[1, 5, 3]",
+    "expected_output": "False",
+    "explanation": "Base case: list length is 0 or 1. Recursive step: check if `list[0] <= list[1]` AND recursively check the remainder of the list."
+  },
+  {
+    "id": 63,
+    "level": "Intermediate",
+    "question": "Find the single number in an array where every other element appears exactly twice (use XOR operator for efficiency).",
+    "sample_input": "[2, 2, 1, 4, 4]",
+    "expected_output": "1",
+    "explanation": "XORing a number with itself results in 0. XORing all numbers in the list cancels out all duplicates, leaving only the single number."
+  },
+  {
+    "id": 64,
+    "level": "Intermediate",
+    "question": "Write a recursive function to generate all combinations of size `k` from a list of unique elements.",
+    "sample_input": "List: [1, 2, 3], k=2",
+    "expected_output": "[[1, 2], [1, 3], [2, 3]]",
+    "explanation": "The recursion either includes the current element (and solves for k-1) or excludes it (and solves for k)."
+  },
+  {
+    "id": 65,
+    "level": "Intermediate",
+    "question": "Implement a simple custom context manager using the `contextlib` module's `@contextmanager` decorator for temporarily changing a global variable.",
+    "sample_input": "with temp_setting(10): print(GLOBAL_VAR)",
+    "expected_output": "10",
+    "explanation": "Define a generator function that yields the state inside a `try` block. Use a `finally` block to restore the original variable value."
+  },
+  {
+    "id": 66,
+    "level": "Intermediate",
+    "question": "Check if a list is monotonic (either entirely non-decreasing or entirely non-increasing).",
+    "sample_input": "[1, 3, 2]",
+    "expected_output": "False",
+    "explanation": "Check if the list is equal to its sorted version OR equal to its reverse sorted version."
+  },
+  {
+    "id": 67,
+    "level": "Intermediate",
+    "question": "Use the `map` function and a lambda expression to convert a list of temperature strings (e.g., '10C') into a list of Fahrenheit integers.",
+    "sample_input": "['0C', '20C']",
+    "expected_output": "[32, 68]",
+    "explanation": "The lambda should extract the number, convert to int, and apply the formula (C * 9/5) + 32."
+  },
+  {
+    "id": 68,
+    "level": "Intermediate",
+    "question": "Define a simple Trie (prefix tree) Node class and implement a method to insert a word.",
+    "sample_input": "trie.insert('cat')",
+    "expected_output": "Node structure exists: c -> a -> t (is_end_of_word=True)",
+    "explanation": "Each node should have a dictionary of children (mapping char to next Node) and a boolean flag for `is_end_of_word`."
+  },
+  {
+    "id": 69,
+    "level": "Intermediate",
+    "question": "Check if an integer is a palindrome *without* converting it to a string.",
+    "sample_input": "121",
+    "expected_output": "True",
+    "explanation": "Reverse the second half of the number using modulo and division. Compare the reversed half with the first half of the original number."
+  },
+  {
+    "id": 70,
+    "level": "Intermediate",
+    "question": "Find the smallest positive integer that is *not* present in a given unsorted array of integers.",
+    "sample_input": "[1, 2, 0]",
+    "expected_output": "3",
+    "explanation": "Filter the array to include only positive numbers and store them in a set for O(1) lookup. Iterate from 1 upwards until a number is not found."
+  },
+  {
+    "id": 71,
+    "level": "Intermediate",
+    "question": "Convert a list of (key, value) pairs into a dictionary where the first element of each pair is the key.",
+    "sample_input": "[['a', 1], ['b', 2]]",
+    "expected_output": "{'a': 1, 'b': 2}",
+    "explanation": "Use the `dict()` constructor directly on the list of pairs or a dictionary comprehension."
+  },
+  {
+    "id": 72,
+    "level": "Intermediate",
+    "question": "Implement a class with a `staticmethod` that returns a standard system configuration (e.g., default port number).",
+    "sample_input": "Config.get_default_port()",
+    "expected_output": "8080",
+    "explanation": "Define a function inside the class decorated with `@staticmethod`. It does not take `self` or `cls`."
+  },
+  {
+    "id": 73,
+    "level": "Intermediate",
+    "question": "Implement a simple usage of `collections.namedtuple` for representing a 3D Point with coordinates (x, y, z).",
+    "sample_input": "p = Point(1, 2, 3); p.y",
+    "expected_output": "2",
+    "explanation": "Define the namedtuple type first, then instantiate it. Access fields by name."
+  },
+  {
+    "id": 74,
+    "level": "Intermediate",
+    "question": "Find the minimum number of swaps required to sort an array where the elements are a permutation of 1 to N (Cycle Sort concept).",
+    "sample_input": "[1, 5, 4, 3, 2]",
+    "expected_output": "2 (5 and 2 swap, 4 and 3 swap)",
+    "explanation": "The minimum swaps required equals (N - number of cycles). Identify and count the cycles in the permutation."
+  },
+  {
+    "id": 75,
+    "level": "Intermediate",
+    "question": "Implement a decorator that enforces that a function's arguments must be of a specified type (e.g., both integers).",
+    "sample_input": "@type_check(int, int) def add(a, b): ...; add(1, '2')",
+    "expected_output": "Raises TypeError",
+    "explanation": "The decorator's wrapper function checks `isinstance(arg, expected_type)` for each positional argument before calling the original function."
+  },
+  {
+    "id": 76,
+    "level": "Intermediate",
+    "question": "Calculate the number of trailing zeros in $N!$ (N Factorial).",
+    "sample_input": "10",
+    "expected_output": "2",
+    "explanation": "Trailing zeros are determined by the number of factors of 5 in the prime factorization of N!. This is calculated as lfloor N/5 floor + lfloor N/25 floor + floor N/125 floor + dots$"
+  },
+  {
+    "id": 77,
+    "level": "Intermediate",
+    "question": "Remove all occurrences of a specific value from a list *in-place* and return the new length of the list.",
+    "sample_input": "List: [3, 2, 2, 3], Value: 3",
+    "expected_output": "2 (Modified List: [2, 2, _, _])",
+    "explanation": "Use two pointers (read and write). The write pointer only moves when a non-target value is encountered, overwriting elements."
+  },
+  {
+    "id": 78,
+    "level": "Intermediate",
+    "question": "Find a peak element in a 'mountain array' (an element greater than its neighbors).",
+    "sample_input": "[1, 2, 3, 1]",
+    "expected_output": "3",
+    "explanation": "Use Binary Search: if `mid` element is smaller than `mid+1`, the peak must be on the right. Otherwise, the peak is on the left or is `mid`."
+  },
+  {
+    "id": 79,
+    "level": "Intermediate",
+    "question": "For a simple custom single-linked list implementation, write a method to insert a new node at the end.",
+    "sample_input": "List: 1->2. insert_at_end(3)",
+    "expected_output": "1->2->3",
+    "explanation": "Start from the head and traverse the list until the `next` attribute of the current node is `None`. Update that `next` attribute to the new node."
+  },
+  {
+    "id": 80,
+    "level": "Intermediate",
+    "question": "Merge two dictionaries into a single dictionary using the Python union operator (`|`).",
+    "sample_input": "A={'a': 1, 'b': 2}, B={'b': 3, 'c': 4}",
+    "expected_output": "{'a': 1, 'b': 3, 'c': 4}",
+    "explanation": "Use the dict union operator: `C = A | B`. Note that values from the second dictionary (B) override the first (A) for duplicate keys."
+  },
+  {
+    "id": 81,
+    "level": "Intermediate",
+    "question": "Serialize a simple Python dictionary into a JSON formatted string.",
+    "sample_input": "{'key': 'value', 'count': 5}",
+    "expected_output": "{\"key\": \"value\", \"count\": 5}",
+    "explanation": "Use the `json.dumps()` function from the built-in `json` module."
+  },
+  {
+    "id": 82,
+    "level": "Intermediate",
+    "question": "Implement the magic method `__str__` for a `Person` class to provide a readable string representation.",
+    "sample_input": "print(Person('Joe', 25))",
+    "expected_output": "Person(name='Joe', age=25)",
+    "explanation": "Define `def __str__(self):` to return a formatted string. This method is called by `print()` and `str()`."
+  },
+  {
+    "id": 83,
+    "level": "Intermediate",
+    "question": "Use the `functools.reduce` function and a lambda expression to find the product of all numbers in a list.",
+    "sample_input": "[2, 3, 4]",
+    "expected_output": "24",
+    "explanation": "The lambda function in `reduce` should perform multiplication: `reduce(lambda x, y: x * y, list)`."
+  },
+  {
+    "id": 84,
+    "level": "Intermediate",
+    "question": "Check if a square matrix is symmetric (equal to its own transpose).",
+    "sample_input": "[[1, 2], [2, 1]]",
+    "expected_output": "True",
+    "explanation": "Use nested loops to check if `matrix[i][j]` equals `matrix[j][i]` for all $i$ and $j$."
+  },
+  {
+    "id": 85,
+    "level": "Intermediate",
+    "question": "Find the minimum element in a sorted array that has been rotated.",
+    "sample_input": "[4, 5, 6, 7, 0, 1, 2]",
+    "expected_output": "0",
+    "explanation": "Use Binary Search. The minimum element is the only one whose previous element is greater than it (or it's the start of the list)."
+  },
+  {
+    "id": 86,
+    "level": "Intermediate",
+    "question": "Write a function that accepts one parameter as a keyword-only argument (using `*` in the signature).",
+    "sample_input": "func(a=1, b=2)",
+    "expected_output": "a=1, b=2",
+    "explanation": "Define the function as `def func(*, a, b):`. This enforces that `a` and `b` must be passed using their names."
+  },
+  {
+    "id": 87,
+    "level": "Intermediate",
+    "question": "Find the set difference between two lists (elements present in list A but not in list B).",
+    "sample_input": "A=[1, 2, 3], B=[2, 4]",
+    "expected_output": "[1, 3]",
+    "explanation": "Convert both lists to sets and use the set difference operator (`A_set - B_set`) or iterate and check using `not in`."
+  },
+  {
+    "id": 88,
+    "level": "Intermediate",
+    "question": "Write a recursive function to check if a string contains a specific character.",
+    "sample_input": "String: \"hello\", Char: 'e'",
+    "expected_output": "True",
+    "explanation": "Base case: empty string (False). Recursive step: check first character OR recursively check the rest of the string."
+  },
+  {
+    "id": 89,
+    "level": "Intermediate",
+    "question": "Implement a class method that takes a list of numbers and returns a new instance of the class initialized with the average of those numbers.",
+    "sample_input": "Data.from_list([10, 20])",
+    "expected_output": "Data(value=15.0)",
+    "explanation": "Use `@classmethod`. Calculate the average inside the method and return `cls(average)`."
+  },
+  {
+    "id": 90,
+    "level": "Intermediate",
+    "question": "Check if an integer is a power of three.",
+    "sample_input": "27",
+    "expected_output": "True",
+    "explanation": "While the number is divisible by 3, keep dividing. If the final result is 1, it's a power of three."
+  },
+  {
+    "id": 91,
+    "level": "Intermediate",
+    "question": "Use dictionary comprehension to invert a dictionary where values are *not* guaranteed to be unique. Handle non-unique values by creating a list of keys for each value.",
+    "sample_input": "{'a': 1, 'b': 2, 'c': 1}",
+    "expected_output": "{1: ['a', 'c'], 2: ['b']}",
+    "explanation": "Use a standard loop or `defaultdict`. The key must be iterated through once to populate the new dictionary's lists."
+  },
+  {
+    "id": 92,
+    "level": "Intermediate",
+    "question": "Find the length of the cycle in a circular array (using the slow/fast pointer technique - conceptual).",
+    "sample_input": "[2, -1, 1, 2] (Indices: 0->2->3->0)",
+    "expected_output": "3",
+    "explanation": "Use a slow and fast pointer. Once they meet, mark that point. Restart slow, move both 1 step until they meet again (start of cycle). The distance between is the length."
+  },
+  {
+    "id": 93,
+    "level": "Intermediate",
+    "question": "Implement a custom dictionary-like class using the `__missing__` magic method that calculates and returns the square of any key not found.",
+    "sample_input": "d = SquareDict(); d[5]",
+    "expected_output": "25",
+    "explanation": "Define `def __missing__(self, key):` inside the class to return `key * key`. This method is called automatically when a key is not found."
+  },
+  {
+    "id": 94,
+    "level": "Intermediate",
+    "question": "Calculate the maximum depth of a binary tree (represented conceptually by nested dictionaries/recursion).",
+    "sample_input": "{'val': 3, 'left': {'val': 9}, 'right': {'val': 20, 'left': 15}}",
+    "expected_output": "3",
+    "explanation": "Recursively find the depth of the left subtree and the right subtree. The max depth is $1 + max(text{depth}_{text{left}}, text{depth}_{text{right}})$. "
+  },
+  {
+    "id": 95,
+    "level": "Intermediate",
+    "question": "Write a function that uses a `try...except...finally` block to ensure a file is closed even if an error occurs during processing.",
+    "sample_input": "process_file('test.txt', raises_error=True)",
+    "expected_output": "\"Processing failed. File closed.\"",
+    "explanation": "Place the file opening in the `try` block. Put the `file.close()` command in the `finally` block, which always executes regardless of exceptions."
+  },
+  {
+    "id": 96,
+    "level": "Intermediate",
+    "question": "Find the shortest distance between two given words in a list of words.",
+    "sample_input": "Words: ['a', 'c', 'b', 'c'], W1='a', W2='c'",
+    "expected_output": "1",
+    "explanation": "Iterate through the list, storing the latest index found for W1 and W2. Update the minimum distance whenever both indices are known."
+  },
+  {
+    "id": 97,
+    "level": "Intermediate",
+    "question": "Determine if a string is composed of duplicates of its repeating substring (e.g., 'abcabcabc' is 'abc' repeated).",
+    "sample_input": "\"abab\"",
+    "expected_output": "True",
+    "explanation": "Concatenate the string with itself (`s + s`), remove the first and last characters, and check if the original string is still a substring of the result."
+  },
+  {
+    "id": 98,
+    "level": "Intermediate",
+    "question": "Implement a function that reverses the words in a sentence *in-place* (within a list of characters/strings).",
+    "sample_input": "['t', 'h', 'e', ' ', 's', 'k', 'y']",
+    "expected_output": "['s', 'k', 'y', ' ', 't', 'h', 'e']",
+    "explanation": "Reverse the entire list first. Then, iterate through the list and reverse each word individually."
+  },
+  {
+    "id": 99,
+    "level": "Intermediate",
+    "question": "Find the starting index of a subarray of size $k$ that has the maximum average value.",
+    "sample_input": "List: [1, 12, -5, -6, 50, 3], k=4",
+    "expected_output": "1 (Subarray: [12, -5, -6, 50], Sum: 51)",
+    "explanation": "Use a sliding window of size $k$. Calculate the initial sum, then slide the window, subtracting the element that leaves and adding the new element."
+  },
+  {
+    "id": 100,
+    "level": "Intermediate",
+    "question": "Implement a property getter and setter for a class attribute (e.g., `temperature`) that automatically converts the input unit (e.g., Celsius to Kelvin).",
+    "sample_input": "temp.celsius = 0",
+    "expected_output": "temp.kelvin = 273.15",
+    "explanation": "Use the `@property` decorator for the getter and `@attribute.setter` decorator for the setter. The setter logic should perform the conversion before storing the value."
+  },
+  {
+    "id": 101,
+    "level": "Hard",
+    "question": "Given coins of different denominations and a total amount, calculate the number of combinations that make up that amount (Coin Change II problem).",
+    "sample_input": "Amount: 5, Coins: [1, 2, 5]",
+    "expected_output": "4 (Ways: [5], [2, 2, 1], [2, 1, 1, 1], [1, 1, 1, 1, 1])",
+    "explanation": "Use Dynamic Programming. Create a DP array where $dp[i]$ is the number of ways to make amount $i$. Iterate through coins and update $dp[j] += dp[j - coin]$."
+  },
+  {
+    "id": 102,
+    "level": "Hard",
+    "question": "Implement a function to solve the N-Queens puzzle, returning all distinct solutions where no two queens attack each other.",
+    "sample_input": "N=4",
+    "expected_output": "2 (solutions)",
+    "explanation": "Use Backtracking (DFS). Maintain sets/arrays to track used columns, positive diagonals (row + col), and negative diagonals (row - col). Place a queen and recursively try the next row."
+  },
+  {
+    "id": 103,
+    "level": "Hard",
+    "question": "Find the shortest path from a source cell to a destination cell in a binary matrix (0s are open, 1s are blocked).",
+    "sample_input": "Matrix: [[0, 0, 0], [1, 1, 0], [1, 0, 0]], Start: (0, 0), End: (2, 2)",
+    "expected_output": "4",
+    "explanation": "Use Breadth-First Search (BFS). BFS guarantees finding the shortest path in an unweighted graph (or grid). Use a queue to store (row, col, distance)."
+  },
+  {
+    "id": 104,
+    "level": "Hard",
+    "question": "Implement the 0/1 Knapsack problem using Dynamic Programming to find the maximum value that can be achieved without exceeding the weight capacity.",
+    "sample_input": "Capacity: 50, Weights: [10, 20, 30], Values: [60, 100, 120]",
+    "expected_output": "220",
+    "explanation": "Create a 2D DP table where $DP[i][w]$ is the max value using items up to $i$ with capacity $w$. Formula: $max(DP[i-1][w], text{value}_i + DP[i-1][w-text{weight}_i])$."
+  },
+  {
+    "id": 105,
+    "level": "Hard",
+    "question": "Implement a simplified version of the Knuth-Morris-Pratt (KMP) string searching algorithm to find the first occurrence of a pattern in a text, focusing on the LCP array (Failure function).",
+    "sample_input": "Text: \"abxaby\", Pattern: \"aby\"",
+    "expected_output": "3 (Index of first occurrence)",
+    "explanation": "Preprocess the pattern to create the Longest Proper Prefix array (LPS array). This allows the search to efficiently skip mismatched characters."
+  },
+  {
+    "id": 106,
+    "level": "Hard",
+    "question": "Implement functions to serialize (convert to string) and deserialize (reconstruct) a Binary Tree using BFS (level-order traversal).",
+    "sample_input": "Tree root with value 1, left 2, right 3",
+    "expected_output": "Serialization: \"1,2,3,null,null,null,null\"",
+    "explanation": "Use a queue for BFS. For serialization, append nodes (or 'null'). For deserialization, use the queue to reconstruct parent-child relationships."
+  },
+  {
+    "id": 107,
+    "level": "Hard",
+    "question": "Calculate the total amount of rainwater that can be trapped between bars of varying heights (Trapping Rain Water problem).",
+    "sample_input": "[0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]",
+    "expected_output": "6",
+    "explanation": "For each bar, find the maximum height to its left and right. The water trapped at the bar is $max(0, min(text{max_left}, text{max_right}) - text{height}_{text{current}})$. Can be optimized with two pointers."
+  },
+  {
+    "id": 108,
+    "level": "Hard",
+    "question": "Given a string $s$ and a dictionary of words, determine if $s$ can be segmented into a space-separated sequence of one or more dictionary words (Word Break problem).",
+    "sample_input": "s=\"leetcode\", dict=[\"leet\", \"code\"]",
+    "expected_output": "True",
+    "explanation": "Use Dynamic Programming. $DP[i]$ is True if $s[0:i]$ can be segmented. $DP[i] = exists j < i text{ s.t. } DP[j] text{ and } s[j:i] in text{dict}$."
+  },
+  {
+    "id": 109,
+    "level": "Hard",
+    "question": "Find the median of two sorted arrays, $A$ and $B$, of sizes $m$ and $n$, respectively. The overall runtime complexity must be $O(log(m+n))$.",
+    "sample_input": "A=[1, 3], B=[2]",
+    "expected_output": "2.0",
+    "explanation": "This requires an optimized solution based on Binary Search, focusing on finding the correct 'partition' point in the smaller array such that the elements are balanced."
+  },
+  {
+    "id": 110,
+    "level": "Hard",
+    "question": "Count the number of 'islands' (connected components of '1's) in a 2D binary grid, where '1' represents land and '0' represents water.",
+    "sample_input": "Grid: [['1','1','0'], ['1','0','0'], ['0','0','1']]",
+    "expected_output": "2",
+    "explanation": "Iterate through the grid. When a '1' is found, increment the count and use DFS or BFS to traverse and mark all connected '1's as visited (e.g., change to '0')."
+  },
+  {
+    "id": 111,
+    "level": "Hard",
+    "question": "Find the length of the Longest Increasing Subsequence (LIS) in an unsorted array of integers.",
+    "sample_input": "[10, 9, 2, 5, 3, 7, 101, 18]",
+    "expected_output": "4 (Subsequence: [2, 3, 7, 18] or [2, 5, 7, 18])",
+    "explanation": "Use Dynamic Programming where $DP[i]$ is the length of LIS ending at index $i$. An $O(N log N)$ solution uses binary search to maintain an auxiliary tail array."
+  },
+  {
+    "id": 112,
+    "level": "Hard",
+    "question": "Implement a Least Recently Used (LRU) Cache with a specified capacity. The operations `get` and `put` must run in $O(1)$ time.",
+    "sample_input": "LRUCache(2).put(1, 1).put(2, 2).get(1)",
+    "expected_output": "1",
+    "explanation": "Requires combining a Dictionary (for $O(1)$ lookup) and a Doubly Linked List (for $O(1)$ updates of recency/removal)."
+  },
+  {
+    "id": 113,
+    "level": "Hard",
+    "question": "Given a set of candidate numbers and a target sum, find all unique combinations where the candidate numbers sum to the target (Combination Sum problem, candidates can be reused).",
+    "sample_input": "Candidates: [2, 3, 6, 7], Target: 7",
+    "expected_output": "[[7], [2, 2, 3]]",
+    "explanation": "Use Backtracking (DFS). Sort candidates first. At each step, either include the current number and recurse, or exclude it and move to the next number."
+  },
+  {
+    "id": 114,
+    "level": "Hard",
+    "question": "Implement a simplified regular expression matcher that supports two metacharacters: '.' (matches any single character) and '*' (matches zero or more of the preceding element).",
+    "sample_input": "s=\"aab\", p=\"c*a*b\"",
+    "expected_output": "True",
+    "explanation": "This is typically solved using Dynamic Programming or recursion with memoization. The key is handling the '*' case, which involves zero, one, or multiple matches."
+  },
+  {
+    "id": 115,
+    "level": "Hard",
+    "question": "Implement a thread-safe counter class in Python using the `threading.Lock` mechanism.",
+    "sample_input": "Two threads concurrently incrementing the counter 10 times",
+    "expected_output": "20",
+    "explanation": "The `increment` method must acquire the lock before accessing/modifying the counter variable and release the lock afterward (use `with self.lock:` for safety)."
+  },
+  {
+    "id": 116,
+    "level": "Hard",
+    "question": "Find a topological sorting of a directed acyclic graph (DAG) represented by an adjacency list.",
+    "sample_input": "Graph: 5->2, 5->0, 4->0, 4->1, 2->3, 3->1",
+    "expected_output": "[5, 4, 2, 3, 1, 0] (or similar valid order)",
+    "explanation": "Use Kahn's algorithm (based on in-degrees) or DFS. In Kahn's, start with nodes having an in-degree of 0, remove them, and update neighbor in-degrees."
+  },
+  {
+    "id": 117,
+    "level": "Hard",
+    "question": "Calculate the minimum number of operations required to convert string $A$ to string $B$. Operations include insertion, deletion, or substitution (Edit Distance/Levenshtein).",
+    "sample_input": "A=\"kitten\", B=\"sitting\"",
+    "expected_output": "3",
+    "explanation": "Use Dynamic Programming. $DP[i][j]$ is the minimum distance between $A[0..i-1]$ and $B[0..j-1]$. The recurrence relation involves checking the minimum of the three operations."
+  },
+  {
+    "id": 118,
+    "level": "Hard",
+    "question": "Check if a Binary Tree is height-balanced (for every node, the heights of its two subtrees never differ by more than one).",
+    "sample_input": "A balanced tree structure",
+    "expected_output": "True",
+    "explanation": "Use a post-order traversal (bottom-up approach). Recursively check balance of children and return the height. If unbalanced, pass an error signal (e.g., -1) up the recursion stack."
+  },
+  {
+    "id": 119,
+    "level": "Hard",
+    "question": "Given an array of integers, where every element appears twice except for two elements which appear only once, find the two unique elements.",
+    "sample_input": "[1, 2, 1, 3, 2, 5]",
+    "expected_output": "[3, 5]",
+    "explanation": "Use Bitwise XOR. First, XOR all elements to get $X = A oplus B$. Then, find a differentiating bit in $X$. Group the original array elements based on that bit and XOR the groups separately."
+  },
+  {
+    "id": 120,
+    "level": "Hard",
+    "question": "Design a Python class structure that implements the simple Factory Pattern for creating different types of database connections (e.g., MySQL, PostgreSQL) based on an input string.",
+    "sample_input": "ConnectionFactory().create_connection('MySQL')",
+    "expected_output": "Returns a MySQLConnection object",
+    "explanation": "Define an abstract Base Connection class. Implement concrete connection classes. The Factory class has one method that uses conditional logic (if/elif) to instantiate the correct concrete class."
+  },
+  {
+    "id": 121,
+    "level": "Hard",
+    "question": "Find the shortest path from a source node to all other nodes in a weighted directed graph where edge weights are non-negative (Dijkstra's Algorithm - conceptual implementation).",
+    "sample_input": "Graph: nodes 0, 1, 2; edges (0, 1, 10), (0, 2, 5), (2, 1, 2)",
+    "expected_output": "Distances: {0: 0, 1: 7, 2: 5}",
+    "explanation": "Use a Min Heap (Priority Queue) to store (distance, node). Greedily extract the node with the minimum distance and relax its neighbors' distances."
+  },
+  {
+    "id": 122,
+    "level": "Hard",
+    "question": "Implement a Min Heap (Priority Queue) class from scratch using a list/array, including the `insert` and `extract_min` operations with $O(log N)$ complexity.",
+    "sample_input": "heap.insert(5); heap.insert(3); heap.extract_min()",
+    "expected_output": "3",
+    "explanation": "Use a list to store elements. Insertion requires 'bubbling up' (heapify-up). Extraction requires swapping with the last element and 'bubbling down' (heapify-down)."
+  },
+  {
+    "id": 123,
+    "level": "Hard",
+    "question": "Implement a Sudoku Solver function that takes a partially filled $9 \times 9$ grid and fills it to solve the puzzle using Backtracking.",
+    "sample_input": "A partial Sudoku grid",
+    "expected_output": "A complete, valid Sudoku grid",
+    "explanation": "Use recursion and backtracking. Find an empty cell. Try numbers 1-9. If the number is valid in the row, col, and $3 \times 3$ box, place it and recurse. If recursion fails, backtrack (remove the number and try the next)."
+  },
+  {
+    "id": 124,
+    "level": "Hard",
+    "question": "Find the length of the Longest Palindromic Subsequence in a given string.",
+    "sample_input": "\"bbbab\"",
+    "expected_output": "4 (Subsequence: \"bbbb\")",
+    "explanation": "Use Dynamic Programming. $DP[i][j]$ is the length of LPS for the substring $s[i..j]$. If $s[i] == s[j]$, then $DP[i][j] = 2 + DP[i+1][j-1]$. Otherwise, $DP[i][j] = max(DP[i+1][j], DP[i][j-1])$."
+  },
+  {
+    "id": 125,
+    "level": "Hard",
+    "question": "Find the minimum window substring in string $S$ that contains all characters of string $T$ (with counts).",
+    "sample_input": "S=\"ADOBECODEBANC\", T=\"ABC\"",
+    "expected_output": "\"BANC\"",
+    "explanation": "Use the Sliding Window technique. Maintain two hash maps (one for $T$'s required counts, one for the current window's counts). Shrink and expand the window while tracking when required characters are matched."
+  },
+  {
+    "id": 126,
+    "level": "Hard",
+    "question": "Find the largest rectangular area possible in a given histogram (array of bar heights).",
+    "sample_input": "[2, 1, 5, 6, 2, 3]",
+    "expected_output": "10",
+    "explanation": "Use a Monotonic Stack to find the nearest smaller bar to the left and right of each bar in $O(N)$ time. The area for bar $i$ is $\text{height}[i] \times (\text{right} - \text{left} - 1)$."
+  },
+  {
+    "id": 127,
+    "level": "Hard",
+    "question": "Implement a custom Python descriptor for validating that an attribute assigned to a class instance is always an integer.",
+    "sample_input": "class MyClass: x = IntValidator(); obj.x = 10",
+    "expected_output": "obj.x = 10 (If obj.x = 'a', raises TypeError)",
+    "explanation": "The descriptor class needs `__set__` to handle assignment. Inside `__set__`, check `isinstance(value, int)` and raise an exception otherwise. It uses `__get__` to retrieve the stored value."
+  },
+  {
+    "id": 128,
+    "level": "Hard",
+    "question": "Solve the Water and Jug problem: given two jugs of capacities $A$ and $B$, determine if it's possible to measure exactly $C$ liters of water.",
+    "sample_input": "Jug A=3, Jug B=5, Target C=4",
+    "expected_output": "True",
+    "explanation": "The problem is solvable if and only if $C$ is a multiple of $GCD(A, B)$ and $C le A + B$ (Bézout's identity)."
+  },
+  {
+    "id": 129,
+    "level": "Hard",
+    "question": "Detect if a cycle exists in a directed graph represented by an adjacency list.",
+    "sample_input": "Graph: 0->1, 1->2, 2->0",
+    "expected_output": "True",
+    "explanation": "Use DFS. Maintain two sets: one for visited nodes and one for nodes currently in the recursion stack (recStack). A cycle exists if a visited node is encountered that is also in the recStack."
+  },
+  {
+    "id": 130,
+    "level": "Hard",
+    "question": "Calculate the number of unique paths from the top-left to the bottom-right of a grid with obstacles (Unique Paths II).",
+    "sample_input": "Grid: [[0, 0, 0], [0, 1, 0], [0, 0, 0]] (1 is obstacle)",
+    "expected_output": "2",
+    "explanation": "Use Dynamic Programming. $DP[i][j]$ is the number of paths to cell $(i, j)$. If cell $(i, j)$ is an obstacle, $DP[i][j] = 0$. Otherwise, $DP[i][j] = DP[i-1][j] + DP[i][j-1]$."
+  },
+  {
+    "id": 131,
+    "level": "Hard",
+    "question": "Implement a simplified Trie data structure with a method to return all words that start with a given prefix (auto-suggest feature).",
+    "sample_input": "Words: [\"apple\", \"app\", \"bat\"], Prefix: \"app\"",
+    "expected_output": "['apple', 'app']",
+    "explanation": "Navigate the Trie until the prefix path is found. Then use DFS/BFS starting from the prefix node to collect all words stored beneath it."
+  },
+  {
+    "id": 132,
+    "level": "Hard",
+    "question": "Implement a custom version of the built-in `map` function using a Python generator.",
+    "sample_input": "custom_map(lambda x: x*2, [1, 2, 3])",
+    "expected_output": "Yields 2, 4, 6",
+    "explanation": "Define a function that takes a function and an iterable. Inside the function, use a `for` loop and the `yield` keyword to apply the function to each element of the iterable."
+  },
+  {
+    "id": 133,
+    "level": "Hard",
+    "question": "Write a function to sort a list of `datetime` objects in ascending order by date, but *descending* order by time for entries on the same day.",
+    "sample_input": "['2023-01-01 10:00', '2023-01-02 12:00', '2023-01-01 11:00']",
+    "expected_output": "['2023-01-01 11:00', '2023-01-01 10:00', '2023-01-02 12:00']",
+    "explanation": "Use the `sorted()` function with a tuple as the key: `key=lambda dt: (dt.date(), -dt.time().second, ...)` to ensure correct primary (date) and secondary (time/negative time) sorting."
+  },
+  {
+    "id": 134,
+    "level": "Hard",
+    "question": "Reverse the bits of a 32-bit unsigned integer.",
+    "sample_input": "0b00000000000000000000000000000010 (2)",
+    "expected_output": "0b01000000000000000000000000000000 (1073741824)",
+    "explanation": "Iterate from $i=0$ to $31$. Extract the $i$-th bit of the input and set the $(31-i)$-th bit of the result using bitwise shift operations ($>>$, $<<$, and $&$)."
+  },
+  {
+    "id": 135,
+    "level": "Hard",
+    "question": "Given a set of distinct integers, return all possible subsets (the power set).",
+    "sample_input": "[1, 2, 3]",
+    "expected_output": "[[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]",
+    "explanation": "Use Backtracking or the Iterative approach. Iteratively: start with $[]$, and for each number in the set, append a copy of all existing subsets with the new number added."
+  },
+  {
+    "id": 136,
+    "level": "Hard",
+    "question": "Find the maximum size square sub-matrix with all 1s in a given 2D binary matrix.",
+    "sample_input": "Matrix: [[1, 0, 1], [1, 1, 1], [1, 1, 1]]",
+    "expected_output": "2 (Size of the largest square)",
+    "explanation": "Use Dynamic Programming. $DP[i][j]$ stores the side length of the largest square ending at $(i, j)$. If $M[i][j]=1$, $DP[i][j] = 1 + min(DP[i-1][j], DP[i][j-1], DP[i-1][j-1])$. "
+  },
+  {
+    "id": 137,
+    "level": "Hard",
+    "question": "Given a list of words and an alphabet order, determine if the words are sorted according to that order (Alien Dictionary concept, simplified).",
+    "sample_input": "Words: [\"word\", \"world\", \"row\"], Order: \"worldabcefghijkmnpqstuvxyz\"",
+    "expected_output": "False",
+    "explanation": "Create a mapping for the custom order. Compare adjacent words. If one word is a prefix of another (e.g., 'app' vs 'apple'), the shorter must come first."
+  },
+  {
+    "id": 138,
+    "level": "Hard",
+    "question": "Construct a Binary Tree from its Preorder and Inorder traversal arrays.",
+    "sample_input": "Preorder: [3, 9, 20, 15, 7], Inorder: [9, 3, 15, 20, 7]",
+    "expected_output": "Tree root 3, left 9, right 20, etc.",
+    "explanation": "The first element of Preorder is the root. Find this root in Inorder to determine the boundary of the left and right subtrees. Recursively build the subtrees."
+  },
+  {
+    "id": 139,
+    "level": "Hard",
+    "question": "Write a simple asynchronous function using `async def` and `await` that simulates waiting for a database call using `asyncio.sleep`.",
+    "sample_input": "await fetch_data()",
+    "expected_output": "Prints 'Data fetched' after a simulated delay.",
+    "explanation": "Define the function as `async def`. Inside, use `await asyncio.sleep(delay)` to pause execution without blocking the event loop."
+  },
+  {
+    "id": 140,
+    "level": "Hard",
+    "question": "Find the $k$ pairs with the smallest sums, where one element is from list $A$ and the other from list $B$ (both sorted).",
+    "sample_input": "A=[1, 7, 11], B=[2, 4, 6], k=3",
+    "expected_output": "[[1, 2], [1, 4], [2, 6]]",
+    "explanation": "Use a Min Heap (Priority Queue). Initially push $(A[i] + B[0], i, 0)$ for all $i$. Extract the min sum, add the pair to the result, and push the next pair from the row $(A[i] + B[j+1])$."
+  },
+  {
+    "id": 141,
+    "level": "Hard",
+    "question": "Solve the Word Search II problem: given a 2D board of letters and a list of words, find all words present in the board (optimized).",
+    "sample_input": "Board, Words: [\"oath\", \"pea\"]",
+    "expected_output": "['oath']",
+    "explanation": "Build a Trie from the word list. Use DFS/Backtracking on the board, traversing the Trie simultaneously. Pruning occurs when the path diverges from the Trie."
+  },
+  {
+    "id": 142,
+    "level": "Hard",
+    "question": "Implement a Doubly Linked List class with $O(1)$ methods for inserting and deleting a node at a specified index (conceptual complexity).",
+    "sample_input": "list.insert(1, 'new'); list.delete(0)",
+    "expected_output": "Correctly updated list links",
+    "explanation": "Each Node must store `prev` and `next` pointers. Insertion/Deletion requires manipulating four pointers (new node's two, and neighbors' two) and updating the length."
+  },
+  {
+    "id": 143,
+    "level": "Hard",
+    "question": "Find the duplicate number in an array of $n+1$ integers where each integer is between 1 and $n$ (must use $O(1)$ extra space).",
+    "sample_input": "[1, 3, 4, 2, 2]",
+    "expected_output": "2",
+    "explanation": "Use Floyd's Tortoise and Hare (Cycle Detection) algorithm, treating the array indices as a linked list where $i \rightarrow \text{nums}[i]$."
+  },
+  {
+    "id": 144,
+    "level": "Hard",
+    "question": "Find the cheapest price to travel from a source city to a destination city with at most $K$ stops (conceptual Bellman-Ford or BFS).",
+    "sample_input": "Cities/Flights, Start, End, K",
+    "expected_output": "The minimum cost",
+    "explanation": "Use a modified BFS or Dynamic Programming (Bellman-Ford variant). Track the minimum cost to reach any city with a given number of stops."
+  },
+  {
+    "id": 145,
+    "level": "Hard",
+    "question": "Design a class structure that implements the Observer Pattern (or Publisher-Subscriber) for a conceptual 'Data Feed' where multiple 'Subscribers' are notified upon data change.",
+    "sample_input": "feed.add_subscriber(s1); feed.set_data('new')",
+    "expected_output": "s1.update('new') is called",
+    "explanation": "The Publisher maintains a list of Observer objects. It has `register`/`unregister` methods and an `notify` method that iterates through the list, calling the `update` method on each Observer."
+  },
+  {
+    "id": 146,
+    "level": "Hard",
+    "question": "Find the minimum cuts needed to partition a string such that every partition is a palindrome (Palindromic Partitioning II).",
+    "sample_input": "\"aab\"",
+    "expected_output": "1 (Partitions: \"aa\", \"b\")",
+    "explanation": "Use Dynamic Programming. First, pre-calculate all palindromic substrings. Then, $DP[i]$ stores the min cuts for $s[i..N-1]$. $DP[i] = min(1 + DP[j+1])$ for all $j ge i$ where $s[i..j]$ is a palindrome."
+  },
+  {
+    "id": 147,
+    "level": "Hard",
+    "question": "Implement a function to convert an integer to its Roman numeral representation.",
+    "sample_input": "1994",
+    "expected_output": "\"MCMXCIV\"",
+    "explanation": "Use a list of tuples containing (value, symbol) pairs, sorted descending (e.g., 1000='M', 900='CM', 500='D', etc.). Repeatedly subtract the largest possible value and append the symbol."
+  },
+  {
+    "id": 148,
+    "level": "Hard",
+    "question": "Implement a custom property decorator (`@read_only`) that prevents reassignment of a decorated class attribute after initial object creation.",
+    "sample_input": "class C: @read_only x = 1; c.x = 2",
+    "expected_output": "Raises AttributeError on c.x = 2",
+    "explanation": "The decorator must return a property object with only a getter defined, or use a descriptor that raises an error in its `__set__` method if the value is already set."
+  },
+  {
+    "id": 149,
+    "level": "Hard",
+    "question": "Given a list of words, find all words that can be formed by concatenating other words in the list (Concatenated Words).",
+    "sample_input": "[\"cat\", \"cats\", \"catsdog\", \"dog\", \"catdog\"]",
+    "expected_output": "[\"catsdog\", \"catdog\"]",
+    "explanation": "Sort the list by length. Use DP/Trie: For each word, check if it can be broken into parts where each part is a smaller word already found in the set/Trie."
+  },
+  {
+    "id": 150,
+    "level": "Hard",
+    "question": "Find the maximum product of a contiguous subarray within a list of integers.",
+    "sample_input": "[2, 3, -2, 4]",
+    "expected_output": "6",
+    "explanation": "Iterate through the list, tracking both the maximum product *ending at the current position* and the minimum product *ending at the current position*. This handles negative numbers causing a small product to become large."
+  }
+]

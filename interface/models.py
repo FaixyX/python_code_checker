@@ -137,6 +137,13 @@ class QuizQuestionResponse(models.Model):
 	is_correct = models.BooleanField(default=False)
 	created_at = models.DateTimeField(auto_now_add=True)
 	
+	# Scoring fields for ML-style evaluation
+	score = models.FloatField(default=0.0, null=True, blank=True, help_text="Numeric score (0-100)")
+	semantic_similarity = models.FloatField(null=True, blank=True, help_text="Semantic similarity for theory questions (0-1)")
+	code_similarity = models.FloatField(null=True, blank=True, help_text="Code similarity for coding questions (0-1)")
+	test_pass_rate = models.FloatField(null=True, blank=True, help_text="Test case pass rate for coding questions (0-1)")
+	code_quality_score = models.FloatField(null=True, blank=True, help_text="Code quality score (0-1)")
+	
 	def __str__(self):
 		return f"Response for Quiz #{self.quiz.id} - {self.question_type} Question #{self.question_id}"
 
