@@ -1,0 +1,402 @@
+[
+    {
+      "id": 251,
+      "level": "Hard",
+      "question": "What is the Global Interpreter Lock (GIL)?",
+      "sample_input": "N/A",
+      "expected_output": "Single thread execution limit",
+      "explanation": "A mutex that allows only one thread to execute Python bytecodes at a time, preventing multi-core utilization for CPU-bound Python code."
+    },
+    {
+      "id": 252,
+      "level": "Hard",
+      "question": "How does Python's Garbage Collection work?",
+      "sample_input": "import gc",
+      "expected_output": "Ref Counting + Cyclic GC",
+      "explanation": "Primarily uses Reference Counting. For circular references, it uses a generational garbage collector."
+    },
+    {
+      "id": 253,
+      "level": "Hard",
+      "question": "What is a 'Metaclass'?",
+      "sample_input": "class MyMeta(type):",
+      "expected_output": "Class of a class",
+      "explanation": "The 'template' used to create classes. Just as a class defines how an instance behaves, a metaclass defines how a class behaves."
+    },
+    {
+      "id": 254,
+      "level": "Hard",
+      "question": "Explain 'Descriptor' protocol.",
+      "sample_input": "__get__, __set__, __delete__",
+      "expected_output": "Attribute access control",
+      "explanation": "Objects that define how attribute access is handled on other objects. Used to implement properties, methods, and slots."
+    },
+    {
+      "id": 255,
+      "level": "Hard",
+      "question": "What is 'Mangled Name' in Python classes?",
+      "sample_input": "self.__private_var",
+      "expected_output": "_ClassName__private_var",
+      "explanation": "Python automatically changes the name of variables starting with double underscores to avoid naming collisions in subclasses."
+    },
+    {
+      "id": 256,
+      "level": "Hard",
+      "question": "What is 'Cpython'?",
+      "sample_input": "N/A",
+      "expected_output": "Reference implementation",
+      "explanation": "The default and most widely used implementation of Python, written in C and Python."
+    },
+    {
+      "id": 257,
+      "level": "Hard",
+      "question": "What is 'Pypy'?",
+      "sample_input": "N/A",
+      "expected_output": "JIT implementation",
+      "explanation": "An alternative Python implementation using a Just-In-Time compiler, often much faster than CPython for long-running tasks."
+    },
+    {
+      "id": 258,
+      "level": "Hard",
+      "question": "What are 'Weak References'?",
+      "sample_input": "import weakref",
+      "expected_output": "Non-counting reference",
+      "explanation": "A reference that does not prevent the object from being garbage collected."
+    },
+    {
+      "id": 259,
+      "level": "Hard",
+      "question": "What is 'Interning' in Python?",
+      "sample_input": "a = 'hi'; b = 'hi'; a is b",
+      "expected_output": "True (for small strings/ints)",
+      "explanation": "Reusing objects for identical values to save memory. Common for small integers (-5 to 256) and certain strings."
+    },
+    {
+      "id": 260,
+      "level": "Hard",
+      "question": "What is 'Asyncio'?",
+      "sample_input": "async def main():",
+      "expected_output": "Single-threaded concurrency",
+      "explanation": "A library to write concurrent code using the async/await syntax, using an event loop to manage I/O-bound tasks."
+    },
+    {
+      "id": 261,
+      "level": "Hard",
+      "question": "What is the difference between '__str__' and '__repr__'?",
+      "sample_input": "N/A",
+      "expected_output": "End-user vs Developer",
+      "explanation": "__str__ is for a readable representation. __repr__ is for an unambiguous representation (useful for debugging and reconstruction)."
+    },
+    {
+      "id": 262,
+      "level": "Hard",
+      "question": "Explain 'Context Manager' protocol.",
+      "sample_input": "__enter__ and __exit__",
+      "expected_output": "Setup and Teardown logic",
+      "explanation": "The underlying methods that enable the 'with' statement functionality."
+    },
+    {
+      "id": 263,
+      "level": "Hard",
+      "question": "What is 'Bytecode'?",
+      "sample_input": ".pyc files",
+      "expected_output": "Intermediate representation",
+      "explanation": "Python source code is compiled into bytecode, which is then executed by the Python Virtual Machine (PVM)."
+    },
+    {
+      "id": 264,
+      "level": "Hard",
+      "question": "What is 'Coroutines'?",
+      "sample_input": "await func()",
+      "expected_output": "Pausable functions",
+      "explanation": "Generalizations of subroutines that can be entered, exited, and resumed at many different points."
+    },
+    {
+      "id": 265,
+      "level": "Hard",
+      "question": "What is 'introspection'?",
+      "sample_input": "hasattr(obj, 'attr')",
+      "expected_output": "Examining objects at runtime",
+      "explanation": "The ability of a program to examine the type or properties of an object at runtime."
+    },
+    {
+      "id": 266,
+      "level": "Hard",
+      "question": "What is the 'inspect' module?",
+      "sample_input": "import inspect",
+      "expected_output": "Introspection tools",
+      "explanation": "Provides functions for getting info about live objects, such as source code of functions or argument names."
+    },
+    {
+      "id": 267,
+      "level": "Hard",
+      "question": "How does 'yield from' work?",
+      "sample_input": "yield from [1, 2]",
+      "expected_output": "Delegating to sub-generator",
+      "explanation": "Allows a generator to delegate part of its operations to another generator or iterable."
+    },
+    {
+      "id": 268,
+      "level": "Hard",
+      "question": "What is 'Type Hinting' / 'Type Annotations'?",
+      "sample_input": "def f(a: int) -> int:",
+      "expected_output": "Static type hints",
+      "explanation": "A way to explicitly state the expected types of variables and return values, used by linters and IDEs (not enforced by interpreter)."
+    },
+    {
+      "id": 269,
+      "level": "Hard",
+      "question": "What is 'functools.wraps'?",
+      "sample_input": "@wraps(f) def wrapper():",
+      "expected_output": "Preserve metadata",
+      "explanation": "A decorator for decorators that updates the wrapper function to look like the original function (copies __name__, __doc__, etc.)."
+    },
+    {
+      "id": 270,
+      "level": "Hard",
+      "question": "What is 'Abstract Method' implementation in classes?",
+      "sample_input": "raise NotImplementedError",
+      "expected_output": "Enforced implementation",
+      "explanation": "A placeholder in a base class that must be overridden in a subclass to avoid a runtime error."
+    },
+    {
+      "id": 271,
+      "level": "Hard",
+      "question": "Explain 'Lazy Evaluation'.",
+      "sample_input": "Generators",
+      "expected_output": "Compute on demand",
+      "explanation": "Delaying the evaluation of an expression until its value is actually needed, saving CPU and memory."
+    },
+    {
+      "id": 272,
+      "level": "Hard",
+      "question": "What is 'Singleton' pattern in Python?",
+      "sample_input": "Module import",
+      "expected_output": "One instance only",
+      "explanation": "Ensuring a class has only one instance. In Python, module imports are singletons by default."
+    },
+    {
+      "id": 273,
+      "level": "Hard",
+      "question": "What is 'Currying'?",
+      "sample_input": "partial(add, 1)",
+      "expected_output": "Function decomposition",
+      "explanation": "Translating a function that takes multiple arguments into a sequence of functions, each taking a single argument."
+    },
+    {
+      "id": 274,
+      "level": "Hard",
+      "question": "What is the 'dis' module?",
+      "sample_input": "import dis; dis.dis(f)",
+      "expected_output": "Bytecode disassembler",
+      "explanation": "A module that supports analyzing CPython bytecode by disassembling it into a human-readable format."
+    },
+    {
+      "id": 275,
+      "level": "Hard",
+      "question": "What are 'Dunder attributes'?",
+      "sample_input": "__file__, __name__",
+      "expected_output": "Built-in metadata",
+      "explanation": "Special attributes provided by the interpreter to provide context about the current script or module."
+    },
+    {
+      "id": 276,
+      "level": "Hard",
+      "question": "What is 'Structural Pattern Matching'?",
+      "sample_input": "match x: case 1:",
+      "expected_output": "Python 3.10+ feature",
+      "explanation": "A powerful switching mechanism that allows matching against patterns of data structures."
+    },
+    {
+      "id": 277,
+      "level": "Hard",
+      "question": "What is 'Walrus Operator' (:=)?",
+      "sample_input": "if (n := len(a)) > 10:",
+      "expected_output": "Assignment Expression",
+      "explanation": "Allows assigning values to variables as part of a larger expression."
+    },
+    {
+      "id": 278,
+      "level": "Hard",
+      "question": "What is 'Buffer Protocol'?",
+      "sample_input": "memoryview(obj)",
+      "expected_output": "Direct memory access",
+      "explanation": "A C-level API that allows Python objects to expose their raw internal data to other objects without copying."
+    },
+    {
+      "id": 279,
+      "level": "Hard",
+      "question": "Explain 'Generational Hypothesis' in GC.",
+      "sample_input": "gc.collect(0)",
+      "expected_output": "Young die young",
+      "explanation": "The theory that most objects die young; GC scans newer objects more frequently than older ones to improve performance."
+    },
+    {
+      "id": 280,
+      "level": "Hard",
+      "question": "What is 'Ellipsis' (...)?",
+      "sample_input": "x = ...",
+      "expected_output": "Special singleton",
+      "explanation": "Used primarily in slicing (NumPy) or as a placeholder for code in type hints and abstract methods."
+    },
+    {
+      "id": 281,
+      "level": "Hard",
+      "question": "What is 'Dynamic Loading'?",
+      "sample_input": "importlib.import_module()",
+      "expected_output": "Importing at runtime",
+      "explanation": "Importing a module while the program is already running, based on strings or logic."
+    },
+    {
+      "id": 282,
+      "level": "Hard",
+      "question": "What is 'Memory Leak' in Python?",
+      "sample_input": "Circular refs in old Py",
+      "expected_output": "Unreleased memory",
+      "explanation": "When objects stay in memory because they are still referenced, even if they aren't used."
+    },
+    {
+      "id": 283,
+      "level": "Hard",
+      "question": "What is 'Callable'?",
+      "sample_input": "callable(obj)",
+      "expected_output": "True if can be ()",
+      "explanation": "Any object that can be called like a function (functions, classes, or objects with __call__)."
+    },
+    {
+      "id": 284,
+      "level": "Hard",
+      "question": "What is the 'new' method in classes?",
+      "sample_input": "__new__(cls)",
+      "expected_output": "Instance creation",
+      "explanation": "A static method that creates the instance itself, called before __init__."
+    },
+    {
+      "id": 285,
+      "level": "Hard",
+      "question": "What is 'Argument Clinic'?",
+      "sample_input": "CPython internal",
+      "expected_output": "Preprocessing C code",
+      "explanation": "A tool that helps CPython developers write C code for built-in functions by generating boilerplate."
+    },
+    {
+      "id": 286,
+      "level": "Hard",
+      "question": "What is 'Tail Call Optimization'?",
+      "sample_input": "N/A",
+      "expected_output": "Not supported in Python",
+      "explanation": "A feature where a function call at the end of a function doesn't add a new frame to the stack; Python explicitly does not support this."
+    },
+    {
+      "id": 287,
+      "level": "Hard",
+      "question": "What is 'Frame Object'?",
+      "sample_input": "sys._getframe()",
+      "expected_output": "Stack frame state",
+      "explanation": "Objects representing the execution state of a single function call, including local variables and the instruction pointer."
+    },
+    {
+      "id": 288,
+      "level": "Hard",
+      "question": "What is 'Traceback'?",
+      "sample_input": "import traceback",
+      "expected_output": "Error stack history",
+      "explanation": "A report containing the function calls made up to the point where an exception was raised."
+    },
+    {
+      "id": 289,
+      "level": "Hard",
+      "question": "What is 'Pickle Bombs'?",
+      "sample_input": "pickle.loads(untrusted)",
+      "expected_output": "Security vulnerability",
+      "explanation": "Malicious pickle data that can execute arbitrary code upon unpickling."
+    },
+    {
+      "id": 290,
+      "level": "Hard",
+      "question": "Explain 'Constant Folding'.",
+      "sample_input": "2 + 2 -> 4 (in bytecode)",
+      "expected_output": "Compile-time optimization",
+      "explanation": "The compiler evaluates simple expressions during compilation instead of runtime."
+    },
+    {
+      "id": 291,
+      "level": "Hard",
+      "question": "What is 'Object ID'?",
+      "sample_input": "id(obj)",
+      "expected_output": "Memory address (in CPython)",
+      "explanation": "A unique integer assigned to an object during its lifetime."
+    },
+    {
+      "id": 292,
+      "level": "Hard",
+      "question": "What is 'Namespace Packages'?",
+      "sample_input": "PEP 420",
+      "expected_output": "Package across dirs",
+      "explanation": "A package that can be split across multiple directories on the file system."
+    },
+    {
+      "id": 293,
+      "level": "Hard",
+      "question": "What is 'Static Method' performance?",
+      "sample_input": "@staticmethod",
+      "expected_output": "Faster than instance methods",
+      "explanation": "Slightly faster because it doesn't need to pass 'self' or 'cls' as an argument."
+    },
+    {
+      "id": 294,
+      "level": "Hard",
+      "question": "What is 'Total Ordering'?",
+      "sample_input": "@functools.total_ordering",
+      "expected_output": "Full comparison support",
+      "explanation": "A decorator that fills in missing comparison methods if you define at least one and __eq__."
+    },
+    {
+      "id": 295,
+      "level": "Hard",
+      "question": "What is 'Frozen Modules'?",
+      "sample_input": "Internal startup",
+      "expected_output": "Built-in bytecode",
+      "explanation": "Modules that are compiled and stored inside the Python executable to speed up initialization."
+    },
+    {
+      "id": 296,
+      "level": "Hard",
+      "question": "Explain 'Small Int Cache'.",
+      "sample_input": "a=5, b=5; a is b",
+      "expected_output": "True",
+      "explanation": "CPython pre-allocates and reuses integer objects for the range -5 to 256."
+    },
+    {
+      "id": 297,
+      "level": "Hard",
+      "question": "What is 'Abstract Syntax Tree' (AST)?",
+      "sample_input": "import ast",
+      "expected_output": "Code structure tree",
+      "explanation": "A tree representation of the abstract syntactic structure of source code."
+    },
+    {
+      "id": 298,
+      "level": "Hard",
+      "question": "What is 'F-string' performance?",
+      "sample_input": "f'{var}'",
+      "expected_output": "Fastest string formatting",
+      "explanation": "Evaluated at runtime as part of the bytecode, making it faster than % or .format()."
+    },
+    {
+      "id": 299,
+      "level": "Hard",
+      "question": "What is 'Cooperative Multitasking'?",
+      "sample_input": "async/await",
+      "expected_output": "Voluntary yield",
+      "explanation": "A type of multitasking where a process voluntarily gives up control to allow other processes to run (event loop)."
+    },
+    {
+      "id": 300,
+      "level": "Hard",
+      "question": "What is 'Reference Counting'?",
+      "sample_input": "sys.getrefcount(obj)",
+      "expected_output": "Tracking pointers",
+      "explanation": "The primary way CPython tracks objects; when a count reaches zero, the memory is deallocated."
+    }
+  ]
